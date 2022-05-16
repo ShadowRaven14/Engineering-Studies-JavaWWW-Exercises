@@ -1,4 +1,4 @@
-package com.example.mateuszprojectzad6.model;
+package com.example.mateuszprojectzad6.entities;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

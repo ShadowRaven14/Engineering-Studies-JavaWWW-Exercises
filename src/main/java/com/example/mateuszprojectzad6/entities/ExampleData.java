@@ -1,4 +1,4 @@
-package com.example.mateuszprojectzad6.model;
+package com.example.mateuszprojectzad6.entities;
 
 
 import org.springframework.ui.Model;

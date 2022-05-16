@@ -1,6 +1,6 @@
-package com.example.mateuszprojectzad6.repository;
+package com.example.mateuszprojectzad6.repositories;
 
-import com.example.mateuszprojectzad6.model.ExampleData;
+import com.example.mateuszprojectzad6.entities.ExampleData;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

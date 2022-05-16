@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Product Page</title>
+    <link href="../css/commonstyle.css" rel="stylesheet" type="text/css">
+    <link href="../css/tablestyle.css" rel="stylesheet" type="text/css">
+    <link href="../css/hstyle.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<h3>Products Page</h3>
+<table cellpadding="2" cellspacing="2" border="1" class="styled-table">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Photo</th>
+        <th>Price</th>
+        <th>Buy</th>
+    </tr>
+    <c:forEach var="shopProduct" items="${products }">
+        <tr>
+            <td>${shopProduct.id }</td>
+            <td>${shopProduct.name }</td>
+            <td><img src="${pageContext.request.contextPath }/resources/http://learningprogramming.net/wp-content/uploads/java/spring_mvc/${shopProduct.photo }" width="50"></td>
+            <td>${shopProduct.price }</td>
+            <td align="center">
+                <a href="${pageContext.request.contextPath }/cart/buy/${shopProduct.id}">Buy Now</a>
+            </td>
+        </tr>
+    </c:forEach>
+</table>
+
+</body>
+</html>

@@ -1,9 +1,9 @@
-package com.example.mateuszprojectzad6.controller;
+package com.example.mateuszprojectzad6.controllers;
 
-import com.example.mateuszprojectzad6.model.DataNotFoundException;
-import com.example.mateuszprojectzad6.model.Item;
-import com.example.mateuszprojectzad6.model.Service;
-import com.example.mateuszprojectzad6.repository.ExampleDataRepository;
+import com.example.mateuszprojectzad6.entities.DataNotFoundException;
+import com.example.mateuszprojectzad6.entities.ShopItem;
+import com.example.mateuszprojectzad6.entities.ShopService;
+import com.example.mateuszprojectzad6.repositories.ExampleDataRepository;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ public class ExampleController
     @Autowired
     ExampleDataRepository repository;
 
-    Service service;
+    ShopService shopService;
 
     @GetMapping("/getUsers")
     public String getAll(Model model) {
@@ -96,15 +96,16 @@ public class ExampleController
     }
 
 
+    /*
     @GetMapping("/add/{id}")
     public String addItemToCart(@PathVariable int id, Model model)
     {
         try
         {
-            Item item2add = service.getItem(id);
-            if(item2add== null) throw new DataNotFoundException(String. valueOf(id));
-            this.service.addToCart(item2add);
-            model.addAttribute( "cart", this.service.getCart().getItems());
+            ShopItem shopItem2Add = shopService.getItem(id);
+            if(shopItem2Add == null) throw new DataNotFoundException(String. valueOf(id));
+            this.shopService.addToCart(shopItem2Add);
+            model.addAttribute( "cart", this.shopService.getCart().getItems());
             return "redirect:/cart/";
         }
         catch (Exception e)
@@ -114,16 +115,17 @@ public class ExampleController
             return "error";
         }
     }
+     */
 
 
-    /*
+
     @GetMapping("/add/{id}")
     public String addItemToCart(@PathVariable int id, Model model)
     {
-        Item item2add= service.getItem(id);
-        if(item2add== null) throw new DataNotFoundException(String. valueOf(id));
-        this.service.addToCart(item2add);
-        model.addAttribute( "cart", this.service.getCart().getItems());
+        ShopItem shopItem2Add = shopService.getItem(id);
+        if(shopItem2Add == null) throw new DataNotFoundException(String. valueOf(id));
+        this.shopService.addToCart(shopItem2Add);
+        model.addAttribute( "cart", this.shopService.getCart().getItems());
         return "redirect:/cart/";
     }
     @ExceptionHandler (DataNotFoundException. class)
@@ -132,5 +134,5 @@ public class ExampleController
         System.out.println("ERROR "+e.getMessage() );
         return "error/notfound";
     }
-     */
+
 }
