@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Tytuł aplikacji</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css"
+          th:href="@{/resources/style.css}"/>
+</head>
+
+<body>
+    <h1>Witamy w aplikacji </h1>
+    <h1>Wybierz menu: </h1>
+    <a th:href="@{/abc}">Pierwsza strona</a>
+    <a th:href="@{/dfgh}">Druga strona</a>
+
+    <h3>Wartości atrybutów:</h3>
+    <span th:text="${name}">Imię</span><br/>
+    <span th:text="${age}">Wiek</span><br/>
+    <span th:text="${login}">Login</span><br/>
+
+    <ol th:each="user : ${users}">
+        <li th:text="${user.id+user.name+user.age}" />
+    </ol>
+
+    <p><a href="/hello">Greet the world!</a></p>
+
+    <form action="/hello" method="GET" id="nameForm">
+        <div>
+            <label for="nameField">How should the app call you?</label>
+            <input name="myName" id="nameField">
+            <button>Greet me!</button>
+        </div>
+    </form>
+</body>
+</html>
+
+<!DOCTYPE HTML>
+<html>
+<head>
+
+</head>
+<body>
+
+</body>
+</html>
