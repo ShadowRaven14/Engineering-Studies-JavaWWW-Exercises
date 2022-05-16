@@ -2,48 +2,53 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Tytuł aplikacji</title>
+    <title>Home Page</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" type="text/css"
           th:href="@{/resources/style.css}"/>
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
     <link href="../css/commonstyle.css" rel="stylesheet" type="text/css">
     <link href="../css/tablestyle.css" rel="stylesheet" type="text/css">
     <link href="../css/hstyle.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
+
+    <!--Menu-->
+    <nav class="navbar navbar-expand-md">
+        <a class="navbar-brand" href="#">Logo</a>
+        <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="main-navigation">
+            <ul class="navbar-nav">
+                <li class="nav-item"> <a class="nav-link" href="HomePage.html">Home</a> </li>
+                <li class="nav-item"> <a class="nav-link" href="#">About</a> </li>
+                <li class="nav-item"> <a class="nav-link" href="#">Contact</a> </li>
+                <li class="nav-item"> <a class="nav-link" href="ProductPage.html">Continue Shopping</a> </li>
+                <li class="nav-item"> <a class="nav-link" href="OrderPage.html">Show my cart</a> </li>
+            </ul>
+        </div>
+    </nav>
+
     <h1>Witamy w aplikacji </h1>
     <h1>Wybierz menu: </h1>
-    <a th:href="@{/abc}">Pierwsza strona</a>
-    <a th:href="@{/dfgh}">Druga strona</a>
+
+        <a th:href="@{/abc}">Pierwsza strona</a>
+        <a th:href="@{/dfgh}">Druga strona</a>
 
     <h3>Wartości atrybutów:</h3>
-    <span th:text="${name}">Imię</span><br/>
-    <span th:text="${age}">Wiek</span><br/>
-    <span th:text="${login}">Login</span><br/>
+        <span th:text="${name}">Imię</span><br/>
+        <span th:text="${age}">Wiek</span><br/>
+        <span th:text="${login}">Login</span><br/>
 
-    <ol th:each="user : ${users}">
-        <li th:text="${user.id+user.name+user.age}" />
-    </ol>
-
-    <p><a href="/hello">Greet the world!</a></p>
-
-    <form action="/hello" method="GET" id="nameForm">
-        <div>
-            <label for="nameField">How should the app call you?</label>
-            <input name="myName" id="nameField">
-            <button>Greet me!</button>
-        </div>
-    </form>
-</body>
-</html>
-
-<!DOCTYPE HTML>
-<html>
-<head>
-
-</head>
-<body>
+        <ol th:each="user : ${users}">
+            <li th:text="${user.id+user.name+user.age}" />
+        </ol>
 
 </body>
 </html>

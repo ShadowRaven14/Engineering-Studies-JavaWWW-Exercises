@@ -11,9 +11,9 @@ public class ShopProductModel
 
     public ShopProductModel() {
         this.shopProducts = new ArrayList<ShopProduct>();
-        this.shopProducts.add(new ShopProduct("p01", "name 1", "apple.jpg", 20));
-        this.shopProducts.add(new ShopProduct("p02", "name 2", "apple.jpg", 21));
-        this.shopProducts.add(new ShopProduct("p03", "name 3", "apple.jpg", 22));
+        this.shopProducts.add(new ShopProduct("p01", "name 1", "resources/static/images/apple.jpg", 20));
+        this.shopProducts.add(new ShopProduct("p02", "name 2", "resources/static/images/apple.jpg", 21));
+        this.shopProducts.add(new ShopProduct("p03", "name 3", "resources/static/images/apple.jpg", 22));
     }
 
     public List<ShopProduct> findAll() {

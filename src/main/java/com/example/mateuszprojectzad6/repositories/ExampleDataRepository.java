@@ -26,7 +26,6 @@ public class ExampleDataRepository
         return null;
     }
 
-
     public Object getOneData(String id)
     {
         return null;

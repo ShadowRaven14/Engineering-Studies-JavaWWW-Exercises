@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping(value = "cart")
-public class ShopCartController {
+public class ShopOrderController {
 
     @RequestMapping(value = "index", method = RequestMethod.GET)
     public String index() {
