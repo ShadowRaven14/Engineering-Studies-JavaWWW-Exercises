@@ -118,7 +118,7 @@ public class ExampleController
      */
 
 
-
+    /*
     @GetMapping("/add/{id}")
     public String addItemToCart(@PathVariable int id, Model model)
     {
@@ -134,5 +134,6 @@ public class ExampleController
         System.out.println("ERROR "+e.getMessage() );
         return "error/notfound";
     }
+     */
 
 }

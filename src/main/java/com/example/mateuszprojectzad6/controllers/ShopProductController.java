@@ -1,6 +1,7 @@
 package com.example.mateuszprojectzad6.controllers;
 
 import com.example.mateuszprojectzad6.entities.ShopItem;
+import com.example.mateuszprojectzad6.entities.ShopProduct;
 import com.example.mateuszprojectzad6.exceptions.DataNotFoundException;
 import com.example.mateuszprojectzad6.models.ShopProductModel;
 import com.example.mateuszprojectzad6.services.ShopService;
@@ -8,16 +9,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class ShopProductController
 {
     ShopService shopService;
 
+    //Podstawowo
     @GetMapping("/")
     public String index(ModelMap modelMap) {
         ShopProductModel shopProductModel = new ShopProductModel();
@@ -25,14 +24,48 @@ public class ShopProductController
         return "ProductPage";
     }
 
-    @GetMapping("/")
-    public String newInformationForm(Model model) {
+    //Inne
+    @GetMapping("/ProductPage")
+    public String viewCategoriesPage(Model model) {
+        model.addAttribute("listShopProducts", shopService.getShopProducts());
+
+        return "/ProductPage";
+    }
+
+    @GetMapping("/newProductPage")
+    public String newShopProductForm(Model model) {
         ShopProductModel shopProductModel = new ShopProductModel();
         model.addAttribute("product", shopProductModel);
         //model.addAttribute("products", shopProductModel.findAll());
         return "newProductPage";
     }
 
+    @PostMapping("/saveShopProduct")
+    public String saveShopProduct(@ModelAttribute("product") ShopProduct product) {
+        shopService.addShopProduct(product);
+
+        return "redirect:/ProductPage";
+    }
+
+    @GetMapping("updateShopProduct/{id}")
+    public String updateShopProduct(@PathVariable(value = "id") long id, Model model) {
+        ShopProduct product = shopService.getShopProductById(id);
+        //model.addAttribute("listCategories", categoryService.getAllCategories());
+        model.addAttribute("product", product);
+
+        return "/updateProductPage";
+    }
+
+    @GetMapping("deleteShopProduct/{id}")
+    public String deleteShopProduct(@PathVariable(value = "id") long id) throws NoSuchFieldException {
+        this.shopService.deleteShopProduct(id);
+
+        return "redirect:/ProductPage";
+    }
+
+
+    //Example
+    /*
     @GetMapping("/add/{id}")
     public String addItemToCart(@PathVariable int id, Model model)
     {
@@ -48,5 +81,6 @@ public class ShopProductController
         System.out.println("ERROR "+e.getMessage() );
         return "error/notfound";
     }
+     */
 
 }

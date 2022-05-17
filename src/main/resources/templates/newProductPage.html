@@ -17,27 +17,9 @@
 
     <h2>Zapisz Informacje</h2>
 
-    <form action="#" th:action="@{/saveInformation}" th:object="${information}" method="POST" id="test">
-        <input type="text" th:field = "*{title}" placeholder="Tytul Informacji" class="form-control mb-4 col-4" maxlength="20" required>
-        <input type="text" th:field = "*{content}" placeholder="Kontent" class="form-control mb-4 col-4" maxlength="500" required>
-
-
-        <input type="date" id="start" name="trip-start"
-               th:value="${#temporals.format(information.date, 'dd-MM-yyyy')}"
-               class="form-control mb-4 col-4"
-               required
-        >
-
-        <div>
-            <div>
-                <select th:field="*{category}">
-                    <option th:each="category : ${listCategories}"
-                            th:text="${category.name}"
-                            th:value="${category.id}"
-                    >
-                </select>
-            </div>
-        </div>
+    <form action="#" th:action="@{/saveShopProduct}" th:object="${product}" method="POST" id="test">
+        <input type="text" th:field = "*{name}" placeholder="Tytul Informacji" class="form-control mb-4 col-4" maxlength="20" required>
+        <input type="text" th:field = "*{price}" placeholder="Kontent" class="form-control mb-4 col-4" maxlength="500" required>
 
         <hr>
         <button type="submit" class="btn btn-info col-2">Dodaj informacje</button>
@@ -45,7 +27,7 @@
 
     <hr>
 
-    <a th:href = "@{/informations}">Powrót do listy kategorii</a>
+    <a th:href = "@{/ProductPage.html}">Powrót do listy kategorii</a>
 </div>
 
 </body>
