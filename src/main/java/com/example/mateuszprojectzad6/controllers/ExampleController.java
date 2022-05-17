@@ -1,8 +1,8 @@
 package com.example.mateuszprojectzad6.controllers;
 
-import com.example.mateuszprojectzad6.entities.DataNotFoundException;
+import com.example.mateuszprojectzad6.exceptions.DataNotFoundException;
 import com.example.mateuszprojectzad6.entities.ShopItem;
-import com.example.mateuszprojectzad6.entities.ShopService;
+import com.example.mateuszprojectzad6.services.ShopService;
 import com.example.mateuszprojectzad6.repositories.ExampleDataRepository;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Product Page</title>
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link href="../static/css/commonstyle.css" rel="stylesheet" type="text/css">
+    <link href="../static/css/tablestyle.css" rel="stylesheet" type="text/css">
+    <link href="../static/css/hstyle.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+    <!--Menu-->
+    <nav class="navbar navbar-expand-md">
+        <a class="navbar-brand" href="#">Logo</a>
+        <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="main-navigation">
+            <ul class="navbar-nav">
+                <li class="nav-item"> <a class="nav-link" href="HomePage.html">Home</a> </li>
+                <li class="nav-item"> <a class="nav-link" href="#">About</a> </li>
+                <li class="nav-item"> <a class="nav-link" href="#">Contact</a> </li>
+                <li class="nav-item"> <a class="nav-link" href="ProductPage.html">Continue Shopping</a> </li>
+                <li class="nav-item"> <a class="nav-link" href="OrderPage.html">Show my cart</a> </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <h3>Products Page</h3>
+    <table class="styled-table">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Photo</th>
+            <th>Price</th>
+            <th>Buy</th>
+        </tr>
+        <tr th:each="product : ${products}">
+            <td th:text="${product.id}"></td>
+            <td th:text="${product.name}"></td>
+            <td th:text="${product.photo}"></td>
+            <td th:text="${product.price}"></td>
+            <td><button>Zamów</button></td>
+        </tr>
+    </table>
+
+    <br/>
+    <input onclick="console.log('klik')" type="submit" value="Add new produkt"/>
+
+</body>
+</html>

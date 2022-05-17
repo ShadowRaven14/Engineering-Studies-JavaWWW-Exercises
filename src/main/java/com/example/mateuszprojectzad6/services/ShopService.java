@@ -1,7 +1,8 @@
-package com.example.mateuszprojectzad6.entities;
+package com.example.mateuszprojectzad6.services;
 
 import java.awt.*;
 
+import com.example.mateuszprojectzad6.entities.ShopItem;
 import org.springframework.stereotype.Component;
 
 @Component

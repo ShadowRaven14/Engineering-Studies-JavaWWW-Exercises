@@ -5,8 +5,6 @@
 <html>
 <head>
     <title>Add new product</title>
-    <link type="text/css"
-          href="<c:url value="/resources/css/bootstrap.css"/>" rel="stylesheet" />
 </head>
 <body>
 <div class="container">
