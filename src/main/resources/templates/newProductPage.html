@@ -2,32 +2,54 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Nowa Informacja</title>
+    <title>new Product Page</title>
 
 
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
           crossorigin="anonymous">
+
+    <link href="../static/css/commonstyle.css" rel="stylesheet" type="text/css">
+    <link href="../static/css/tablestyle.css" rel="stylesheet" type="text/css">
+    <link href="../static/css/hstyle.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div class="container">
-    <h1>Nowa Informacja</h1>
+
+    <!--Menu-->
+    <nav class="navbar navbar-expand-md">
+        <a class="navbar-brand" href="#">Logo</a>
+        <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="main-navigation">
+            <ul class="navbar-nav">
+                <li class="nav-item"> <a class="nav-link" href="HomePage.html">Home</a> </li>
+                <li class="nav-item"> <a class="nav-link" href="#">About</a> </li>
+                <li class="nav-item"> <a class="nav-link" href="#">Contact</a> </li>
+                <li class="nav-item"> <a class="nav-link" href="ProductPage.html">Continue Shopping</a> </li>
+                <li class="nav-item"> <a class="nav-link" href="OrderPage.html">Show my cart</a> </li>
+            </ul>
+        </div>
+    </nav>
+
+    <h1>new Product Page</h1>
     <hr>
 
-    <h2>Zapisz Informacje</h2>
+    <h2>Save Product</h2>
 
     <form action="#" th:action="@{/saveShopProduct}" th:object="${product}" method="POST" id="test">
-        <input type="text" th:field = "*{name}" placeholder="Tytul Informacji" class="form-control mb-4 col-4" maxlength="20" required>
-        <input type="text" th:field = "*{price}" placeholder="Kontent" class="form-control mb-4 col-4" maxlength="500" required>
+        <input type="text" th:field = "*{product.name}" placeholder="Title of Product" class="form-control mb-4 col-4" maxlength="20" required>
+        <input type="text" th:field = "*{product.price}" placeholder="Content" class="form-control mb-4 col-4" maxlength="500" required>
 
         <hr>
-        <button type="submit" class="btn btn-info col-2">Dodaj informacje</button>
+        <button type="submit" class="btn btn-info col-2">Add product</button>
     </form>
 
     <hr>
 
-    <a th:href = "@{/ProductPage.html}">Powrót do listy kategorii</a>
+    <a th:href = "@{/ProductPage.html}">Back to the list of products</a>
 </div>
 
 </body>

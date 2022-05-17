@@ -1,5 +1,8 @@
 package com.example.mateuszprojectzad6.entities;
 
+import javax.persistence.Entity;
+
+@Entity
 public class ShopProduct
 {
     //Atrybuty

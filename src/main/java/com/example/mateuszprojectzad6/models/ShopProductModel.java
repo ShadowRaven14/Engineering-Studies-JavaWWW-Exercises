@@ -2,9 +2,11 @@ package com.example.mateuszprojectzad6.models;
 
 import com.example.mateuszprojectzad6.entities.ShopProduct;
 
+import javax.enterprise.inject.Model;
 import java.util.ArrayList;
 import java.util.List;
 
+@Model
 public class ShopProductModel
 {
     private List<ShopProduct> shopProducts;

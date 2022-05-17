@@ -7,53 +7,53 @@ import javax.servlet.http.HttpSession;
 import com.example.mateuszprojectzad6.entities.ShopItem;
 import com.example.mateuszprojectzad6.models.ShopProductModel;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping(value = "cart")
 public class ShopOrderController {
 
-    @RequestMapping(value = "index", method = RequestMethod.GET)
+    @GetMapping("/")
     public String index() {
-        return "cart/index";
+        return "OrderPage";
     }
 
-    @RequestMapping(value = "buy/{id}", method = RequestMethod.GET)
+    @GetMapping("buy/{id}")
     public String buy(@PathVariable("id") String id, HttpSession session) {
         ShopProductModel shopProductModel = new ShopProductModel();
-        if (session.getAttribute("cart") == null) {
-            List<ShopItem> cart = new ArrayList<ShopItem>();
-            cart.add(new ShopItem(shopProductModel.find(id), 1));
-            session.setAttribute("cart", cart);
+        if (session.getAttribute("order") == null) {
+            List<ShopItem> order = new ArrayList<ShopItem>();
+            order.add(new ShopItem(shopProductModel.find(id), 1));
+            session.setAttribute("order", order);
         } else {
-            List<ShopItem> cart = (List<ShopItem>) session.getAttribute("cart");
-            int index = this.exists(id, cart);
+            List<ShopItem> order = (List<ShopItem>) session.getAttribute("order");
+            int index = this.exists(id, order);
             if (index == -1) {
-                cart.add(new ShopItem(shopProductModel.find(id), 1));
+                order.add(new ShopItem(shopProductModel.find(id), 1));
             } else {
-                int quantity = cart.get(index).getQuantity() + 1;
-                cart.get(index).setQuantity(quantity);
+                int quantity = order.get(index).getQuantity() + 1;
+                order.get(index).setQuantity(quantity);
             }
-            session.setAttribute("cart", cart);
+            session.setAttribute("order", order);
         }
-        return "redirect:/cart/index";
+        return "redirect:/OrderPage";
     }
 
-    @RequestMapping(value = "remove/{id}", method = RequestMethod.GET)
+    @GetMapping("remove/{id}")
     public String remove(@PathVariable("id") String id, HttpSession session) {
         ShopProductModel shopProductModel = new ShopProductModel();
-        List<ShopItem> cart = (List<ShopItem>) session.getAttribute("cart");
-        int index = this.exists(id, cart);
-        cart.remove(index);
-        session.setAttribute("cart", cart);
-        return "redirect:/cart/index";
+        List<ShopItem> order = (List<ShopItem>) session.getAttribute("order");
+        int index = this.exists(id, order);
+        order.remove(index);
+        session.setAttribute("order", order);
+        return "redirect:/OrderPage";
     }
 
-    private int exists(String id, List<ShopItem> cart) {
-        for (int i = 0; i < cart.size(); i++) {
-            if (cart.get(i).getProduct().getId().equalsIgnoreCase(id)) {
+    private int exists(String id, List<ShopItem> order) {
+        for (int i = 0; i < order.size(); i++) {
+            if (order.get(i).getProduct().getId().equalsIgnoreCase(id)) {
                 return i;
             }
         }

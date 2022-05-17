@@ -11,10 +11,5 @@ public interface ShopRepository extends JpaRepository <ShopProduct, Long> {
 
     @Override
     List< ShopProduct > findAll();
-
-    List< ShopProduct > findAlLByDate(LocalDate date);
-
-    //List< Information > findAllByCategory(Category category);
-
 }
 

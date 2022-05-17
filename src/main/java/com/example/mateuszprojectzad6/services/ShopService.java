@@ -8,8 +8,9 @@ import com.example.mateuszprojectzad6.entities.ShopProduct;
 import com.example.mateuszprojectzad6.repositories.ShopRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class ShopService
 {
     @Autowired
@@ -38,7 +39,7 @@ public class ShopService
         return product;
     }
 
-    public java.util.List< ShopProduct > getShopProducts() {
+    public java.util.List<ShopProduct> getShopProducts() {
         return shopRepository.findAll();
     }
 
