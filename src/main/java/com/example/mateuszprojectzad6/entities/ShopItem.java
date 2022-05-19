@@ -1,12 +1,24 @@
 package com.example.mateuszprojectzad6.entities;
 
-import javax.persistence.Entity;
+import lombok.Data;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
+@Table(name = "CATEGORY")
+@Data
 public class ShopItem
 {
     //Atrybuty
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String id;
+
+    @NotEmpty
     private ShopProduct shopProduct;
+
+    @NotEmpty
     private int quantity;
 
     //Kontruktory

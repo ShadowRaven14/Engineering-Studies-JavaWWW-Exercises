@@ -40,8 +40,8 @@
     <h2>Save Product</h2>
 
     <form action="#" th:action="@{/saveShopProduct}" th:object="${product}" method="POST" id="test">
-        <input type="text" th:field = "*{product.name}" placeholder="Title of Product" class="form-control mb-4 col-4" maxlength="20" required>
-        <input type="text" th:field = "*{product.price}" placeholder="Content" class="form-control mb-4 col-4" maxlength="500" required>
+        <input type="text" th:field = "*{title}" placeholder="Title of Product" class="form-control mb-4 col-4" maxlength="20" required>
+        <input type="text" th:field = "*{content}" placeholder="Content" class="form-control mb-4 col-4" maxlength="500" required>
 
         <hr>
         <button type="submit" class="btn btn-info col-2">Add product</button>
