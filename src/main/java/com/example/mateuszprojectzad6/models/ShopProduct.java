@@ -1,15 +1,21 @@
-package com.example.mateuszprojectzad6.entities;
+package com.example.mateuszprojectzad6.models;
 
-import lombok.Data;
+import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.time.LocalDate;
 
 @Entity
-@Table(name = "CATEGORY")
-@Data
+@Table(name = "PRODUCT")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class ShopProduct
 {
     //Atrybuty
@@ -24,11 +30,23 @@ public class ShopProduct
     private String name;
 
     @NotEmpty
+    @Min(value = 10, message = "Price must be greater than 10")
+    @Column(length = 20, nullable = false)
     private double price;
 
+    @NotEmpty
+    @Column(nullable = true)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate date;
+
+    @NotEmpty
+    @Column(length = 20, nullable = true)
     private String photo;
 
 
+
+
+    /*
     //Konstruktory
     public ShopProduct() {}
 
@@ -72,4 +90,5 @@ public class ShopProduct
     public void setPrice(double price) {
         this.price = price;
     }
+     */
 }

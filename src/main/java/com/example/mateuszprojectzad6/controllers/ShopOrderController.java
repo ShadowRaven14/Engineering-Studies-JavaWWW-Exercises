@@ -4,20 +4,25 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 
-import com.example.mateuszprojectzad6.entities.ShopItem;
+import com.example.mateuszprojectzad6.models.ShopItem;
+import com.example.mateuszprojectzad6.models.ShopProduct;
 import com.example.mateuszprojectzad6.models.ShopProductModel;
+import com.example.mateuszprojectzad6.services.ShopService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Controller
 public class ShopOrderController {
 
-    @GetMapping("/")
+    @Autowired
+    ShopService shopService;
+
+
+    @GetMapping("/OrderPage")
     public String index() {
-        return "OrderPage";
+        return "/OrderPage";
     }
 
     @GetMapping("buy/{id}")
@@ -53,7 +58,7 @@ public class ShopOrderController {
 
     private int exists(String id, List<ShopItem> order) {
         for (int i = 0; i < order.size(); i++) {
-            if (order.get(i).getProduct().getId().equalsIgnoreCase(id)) {
+            if (order.get(i).getShopProduct().getId().equalsIgnoreCase(id)) {
                 return i;
             }
         }

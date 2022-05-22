@@ -1,9 +1,9 @@
 package com.example.mateuszprojectzad6.repositories;
 
-import com.example.mateuszprojectzad6.entities.ShopProduct;
+import com.example.mateuszprojectzad6.models.ShopProduct;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import java.time.LocalDate;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @Repository

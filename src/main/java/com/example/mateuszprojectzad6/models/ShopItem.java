@@ -1,26 +1,26 @@
-package com.example.mateuszprojectzad6.entities;
+package com.example.mateuszprojectzad6.models;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.annotation.SessionScope;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-
-@Entity
-@Table(name = "CATEGORY")
-@Data
+@Component
+@SessionScope
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class ShopItem
 {
     //Atrybuty
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
-
-    @NotEmpty
     private ShopProduct shopProduct;
 
-    @NotEmpty
     private int quantity;
 
+    /*
     //Kontruktory
     public ShopItem() {}
     public ShopItem(ShopProduct shopProduct, int quantity) {
@@ -44,4 +44,5 @@ public class ShopItem
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+     */
 }

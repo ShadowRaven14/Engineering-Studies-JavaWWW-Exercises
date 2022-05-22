@@ -1,27 +1,38 @@
 package com.example.mateuszprojectzad6.controllers;
 
-import com.example.mateuszprojectzad6.entities.ShopItem;
-import com.example.mateuszprojectzad6.entities.ShopProduct;
-import com.example.mateuszprojectzad6.exceptions.DataNotFoundException;
+import com.example.mateuszprojectzad6.models.ShopProduct;
 import com.example.mateuszprojectzad6.models.ShopProductModel;
 import com.example.mateuszprojectzad6.services.ShopService;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import java.util.List;
 
 @Controller
 public class ShopProductController
 {
+    @Autowired
     ShopService shopService;
 
+    private List<ShopProduct> shopProducts;
+    public ShopProduct find(String id) {
+        for (ShopProduct shopProduct : this.shopProducts) {
+            if (shopProduct.getId().equalsIgnoreCase(id)) {
+                return shopProduct;
+            }
+        }
+        return null;
+    }
+
+
     //Podstawowo
-    @GetMapping("/")
+    @GetMapping("/ProductPage")
     public String index(ModelMap modelMap) {
         ShopProductModel shopProductModel = new ShopProductModel();
         modelMap.put("products", shopProductModel.findAll());
-        return "ProductPage";
+        return "/ProductPage";
     }
 
     //Inne

@@ -1,14 +1,11 @@
 package com.example.mateuszprojectzad6.services;
 
-import java.awt.*;
 import java.util.Optional;
-
-import com.example.mateuszprojectzad6.entities.ShopItem;
-import com.example.mateuszprojectzad6.entities.ShopProduct;
+import com.example.mateuszprojectzad6.models.ShopProduct;
 import com.example.mateuszprojectzad6.repositories.ShopRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+//import com.example.mateuszprojectzad6.repositories.ShopRepository;
 
 @Service
 public class ShopService
