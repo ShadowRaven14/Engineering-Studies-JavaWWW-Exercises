@@ -12,9 +12,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class ShopOrderController {
+
 
     @Autowired
     ShopService shopService;
@@ -25,8 +27,9 @@ public class ShopOrderController {
         return "/OrderPage";
     }
 
+    /*
     @GetMapping("buy/{id}")
-    public String buy(@PathVariable("id") String id, HttpSession session) {
+    public String buy(@PathVariable("id") Long id, HttpSession session) {
         ShopProductModel shopProductModel = new ShopProductModel();
         if (session.getAttribute("order") == null) {
             List<ShopItem> order = new ArrayList<ShopItem>();
@@ -47,7 +50,7 @@ public class ShopOrderController {
     }
 
     @GetMapping("remove/{id}")
-    public String remove(@PathVariable("id") String id, HttpSession session) {
+    public String remove(@PathVariable("id") Long id, HttpSession session) {
         ShopProductModel shopProductModel = new ShopProductModel();
         List<ShopItem> order = (List<ShopItem>) session.getAttribute("order");
         int index = this.exists(id, order);
@@ -56,13 +59,17 @@ public class ShopOrderController {
         return "redirect:/OrderPage";
     }
 
-    private int exists(String id, List<ShopItem> order) {
+    private int exists(Long id, List<ShopItem> order) {
         for (int i = 0; i < order.size(); i++) {
-            if (order.get(i).getShopProduct().getId().equalsIgnoreCase(id)) {
+            if (order.get(i).getShopProduct().getId()==id) {
                 return i;
             }
         }
         return -1;
     }
+
+     */
+
+
 
 }

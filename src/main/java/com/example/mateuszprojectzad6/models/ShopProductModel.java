@@ -7,19 +7,21 @@ import java.util.List;
 public class ShopProductModel
 {
 
+
     private List<ShopProduct> shopProducts;
 
     public List<ShopProduct> findAll() {
         return this.shopProducts;
     }
 
-    public ShopProduct find(String id) {
+    public ShopProduct find(Long id) {
         for (ShopProduct shopProduct : this.shopProducts) {
-            if (shopProduct.getId().equalsIgnoreCase(id)) {
+            if (shopProduct.getId()==id) {
                 return shopProduct;
             }
         }
         return null;
     }
+
 
 }

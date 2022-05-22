@@ -5,30 +5,14 @@ import com.example.mateuszprojectzad6.models.ShopProduct;
 import com.example.mateuszprojectzad6.repositories.ShopRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-//import com.example.mateuszprojectzad6.repositories.ShopRepository;
 
 @Service
 public class ShopService
 {
+
     @Autowired
     private ShopRepository shopRepository;
 
-    /*
-    public ShopItem getItem(int id)
-    {
-        return null;
-    }
-
-    public List getCart()
-    {
-        return null;
-    }
-
-    public void addToCart(ShopItem shopItem2Add)
-    {
-        return;
-    }
-     */
 
     public ShopProduct addShopProduct(ShopProduct product) {
         shopRepository.save(product);
@@ -47,7 +31,7 @@ public class ShopService
         shopRepository.deleteById(id);
     }
 
-    public ShopProduct getShopProductById(long id) {
+    public ShopProduct getShopProductById(Long id) {
         Optional<ShopProduct> optional = shopRepository.findById(id);
 
         ShopProduct product = null;
@@ -59,4 +43,5 @@ public class ShopService
         }
         return product;
     }
+
 }

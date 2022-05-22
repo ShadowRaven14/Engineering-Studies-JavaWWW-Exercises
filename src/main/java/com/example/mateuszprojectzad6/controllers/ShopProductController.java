@@ -8,18 +8,21 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
-@Controller
+@RestController
 public class ShopProductController
 {
+
+
     @Autowired
-    ShopService shopService;
+    private ShopService shopService;
 
     private List<ShopProduct> shopProducts;
-    public ShopProduct find(String id) {
+    public ShopProduct find(Long id) {
         for (ShopProduct shopProduct : this.shopProducts) {
-            if (shopProduct.getId().equalsIgnoreCase(id)) {
+            if (shopProduct.getId()==id) {
                 return shopProduct;
             }
         }
@@ -28,6 +31,7 @@ public class ShopProductController
 
 
     //Podstawowo
+
     @GetMapping("/ProductPage")
     public String index(ModelMap modelMap) {
         ShopProductModel shopProductModel = new ShopProductModel();
@@ -35,6 +39,7 @@ public class ShopProductController
         return "/ProductPage";
     }
 
+    /*
     //Inne
     @GetMapping("/ProductPage")
     public String viewCategoriesPage(Model model) {
@@ -59,7 +64,7 @@ public class ShopProductController
     }
 
     @GetMapping("updateShopProduct/{id}")
-    public String updateShopProduct(@PathVariable(value = "id") long id, Model model) {
+    public String updateShopProduct(@PathVariable(value = "id") Long id, Model model) {
         ShopProduct product = shopService.getShopProductById(id);
         //model.addAttribute("listCategories", categoryService.getAllCategories());
         model.addAttribute("product", product);
@@ -68,11 +73,13 @@ public class ShopProductController
     }
 
     @GetMapping("deleteShopProduct/{id}")
-    public String deleteShopProduct(@PathVariable(value = "id") long id) throws NoSuchFieldException {
+    public String deleteShopProduct(@PathVariable(value = "id") Long id) throws NoSuchFieldException {
         this.shopService.deleteShopProduct(id);
 
         return "redirect:/ProductPage";
     }
+     */
+
 
 
     //Example

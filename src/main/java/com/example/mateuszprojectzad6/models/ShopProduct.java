@@ -21,7 +21,7 @@ public class ShopProduct
     //Atrybuty
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Long id;
 
     @Column(length = 20)
     @NotEmpty
@@ -32,7 +32,7 @@ public class ShopProduct
     @NotEmpty
     @Min(value = 10, message = "Price must be greater than 10")
     @Column(length = 20, nullable = false)
-    private double price;
+    private Double price;
 
     @NotEmpty
     @Column(nullable = true)
