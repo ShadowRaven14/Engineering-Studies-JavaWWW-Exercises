@@ -10,6 +10,10 @@ import java.util.List;
 public interface ShopRepository extends JpaRepository <ShopProduct, Long> {
 
     @Override
-    List< ShopProduct > findAll();
+    List<ShopProduct> findAll();
+
+    //ShopProduct findById(Long id);
+
+    //ShopProduct findByName(String name);
 }
 

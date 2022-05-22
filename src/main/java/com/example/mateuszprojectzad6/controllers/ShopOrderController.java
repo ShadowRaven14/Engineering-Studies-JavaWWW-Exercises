@@ -6,40 +6,39 @@ import javax.servlet.http.HttpSession;
 
 import com.example.mateuszprojectzad6.models.ShopItem;
 import com.example.mateuszprojectzad6.models.ShopProduct;
-import com.example.mateuszprojectzad6.models.ShopProductModel;
+//import com.example.mateuszprojectzad6.models.ShopProductModel;
 import com.example.mateuszprojectzad6.services.ShopService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RestController;
+//import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-public class ShopOrderController {
-
-
+@Controller
+public class ShopOrderController
+{
     @Autowired
     ShopService shopService;
-
 
     @GetMapping("/OrderPage")
     public String index() {
         return "/OrderPage";
     }
 
+
     /*
     @GetMapping("buy/{id}")
     public String buy(@PathVariable("id") Long id, HttpSession session) {
-        ShopProductModel shopProductModel = new ShopProductModel();
+        ShopProduct shopProduct = new ShopProduct();
         if (session.getAttribute("order") == null) {
             List<ShopItem> order = new ArrayList<ShopItem>();
-            order.add(new ShopItem(shopProductModel.find(id), 1));
+            order.add(new ShopItem(shopProduct.find(id), 1));
             session.setAttribute("order", order);
         } else {
             List<ShopItem> order = (List<ShopItem>) session.getAttribute("order");
             int index = this.exists(id, order);
             if (index == -1) {
-                order.add(new ShopItem(shopProductModel.find(id), 1));
+                order.add(new ShopItem(shopProduct.find(id), 1));
             } else {
                 int quantity = order.get(index).getQuantity() + 1;
                 order.get(index).setQuantity(quantity);
@@ -48,10 +47,11 @@ public class ShopOrderController {
         }
         return "redirect:/OrderPage";
     }
+     */
 
     @GetMapping("remove/{id}")
     public String remove(@PathVariable("id") Long id, HttpSession session) {
-        ShopProductModel shopProductModel = new ShopProductModel();
+        ShopProduct shopProduct = new ShopProduct();
         List<ShopItem> order = (List<ShopItem>) session.getAttribute("order");
         int index = this.exists(id, order);
         order.remove(index);
@@ -67,8 +67,6 @@ public class ShopOrderController {
         }
         return -1;
     }
-
-     */
 
 
 

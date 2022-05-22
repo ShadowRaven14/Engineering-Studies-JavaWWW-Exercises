@@ -1,8 +1,11 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Order Page</title>
+    <title>Home Page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css"
+          th:href="@{/resources/style.css}"/>
     <!--Bootstrap-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -166,43 +169,19 @@
             border-bottom: 2px solid #009879;
         }
     </style>
-
 </head>
 
-<body>
 
+
+<body>
 
     <!--MENU-->
     <div th:replace="fragments/topnav :: navbar"></div>
 
-    <h3>Cart Page</h3>
-    <table class="styled-table">
-        <tr>
-            <th>Option</th>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Photo</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Sub Total</th>
-        </tr>
-        <th:set var="total" value="0"></th:set>
-        <tr th:each="item : ${items}">
-            <td th:text="${item.shopProduct.id}"></td>
-            <td th:text="${item.shopProduct.name}"></td>
-            <td th:text="${item.shopProduct.photo}"></td>
-            <td th:text="${item.shopProduct.price}"></td>
-            <td th:text="${item.shopProduct.quantity}"></td>
-            <td th:text="${item.shopProduct.price * item.quantity}"></td>
-        </tr>
-        <tr>
-            <td colspan="6" align="right">Sum</td>
-            <td>${total }</td>
-        </tr>
-    </table>
-    <br>
+    <h1>Witamy w aplikacji </h1>
+    <h1>Wybierz menu: </h1>
 
-    <label><a href="${pageContext.request.contextPath}/shopProduct">Continue Shopping</a></label>
+    <h3>Wartości atrybutów:</h3>
 
 </body>
 </html>

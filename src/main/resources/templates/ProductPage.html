@@ -15,26 +15,165 @@
     <link href="../static/css/commonstyle.css" rel="stylesheet" type="text/css">
     <link href="../static/css/tablestyle.css" rel="stylesheet" type="text/css">
     <link href="../static/css/hstyle.css" rel="stylesheet" type="text/css">
+
+    <style>
+        /* Menu */
+        body {
+            padding: 0;
+            margin: 0;
+            background: #f2f6e9;
+        }
+        .navbar {
+            background:#6ab446;
+        }
+        .nav-link,
+        .navbar-brand {
+            color: #fff;
+            cursor: pointer;
+        }
+        .nav-link {
+            margin-right: 1em !important;
+        }
+        .nav-link:hover {
+            color: #000;
+        }
+        .navbar-collapse {
+            justify-content: flex-end;
+        }
+
+        .header {
+            background-image: url('images/header-background.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        form {
+            margin: 0;
+        }
+
+        label {
+            display: block;
+            width: 260px;
+            padding: 10px 20px;
+            color: #696969;
+            font-size: 16px;
+            text-shadow: 0 0 1px silver;
+        }
+
+        input[type="submit"] {
+            margin-left: auto;
+            margin-right: auto;
+            width: auto;
+            padding: 5px 13px;
+            border: 1px solid #005f85;
+            color: white;
+            text-shadow: 0 0 1px black;
+            background: #98c9dc;
+            position: relative;
+            left: 400px;
+        }
+        h1 {
+            font-family:Baskerville,Times,'Times New Roman',serif;
+            font-size:75px;
+            color:#589017;
+            font-variant:small-caps;
+            text-align:center;
+            font-weight:bold;
+            padding:15px 0px 15px 0px; /* Tweak this to your liking */
+        }
+
+        h2 {
+            font-family:georgia,serif;
+            font-size:35px;
+            font-style:italic;
+            color:#3E2F2F;
+            letter-spacing:0;
+            line-height:1.429em;
+            padding:0;
+            text-align:center;
+        }
+
+        h2 span {
+            font-family:baskerville,'palatino linotype',georgia,serif;
+            font-size:35px;
+            font-weight:100;
+
+        }
+
+        h3 {
+            font-family:georgia,serif;
+            font-size:35px;
+            font-style:italic;
+            color:#3E2F2F;
+            letter-spacing:0;
+            line-height:1.429em;
+            padding:0;
+            text-align:center;
+
+        }
+
+        h3 span {
+            font-family:baskerville,'palatino linotype',georgia,serif;
+            font-size:35px;
+            font-weight:100;
+
+        }
+
+        .introduction {
+            font-family:'Helvetica Neue',Arial,sans-serif;
+            font-size:15px;
+            font-weight:bold;
+            margin:10px 0px 10px 20px; /* Tweak this to your liking (also add padding) */
+            letter-spacing:3px;
+        }
+
+        .styled-table {
+            border-collapse: collapse;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 0.9em;
+            font-family: sans-serif;
+            min-width: 400px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            padding: 12px 15px 12px 12px;
+        }
+
+        .styled-table thead tr {
+            background-color: #009879;
+            color: #ffffff;
+            text-align: left;
+        }
+
+        .styled-table th,
+        .styled-table td {
+            padding: 12px 15px;
+            width: 260px;
+            color: #696969;
+            font-size: 16px;
+            text-shadow: 0 0 1px silver;
+        }
+
+        .styled-table tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+
+        .styled-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+
+        .styled-table tbody tr:last-of-type {
+            border-bottom: 2px solid #009879;
+        }
+    </style>
 </head>
+
+
 
 <body>
 
-    <!--Menu-->
-    <nav class="navbar navbar-expand-md">
-        <a class="navbar-brand" href="#">Logo</a>
-        <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="main-navigation">
-            <ul class="navbar-nav">
-                <li class="nav-item"> <a class="nav-link" href="HomePage.html">Home</a> </li>
-                <li class="nav-item"> <a class="nav-link" href="#">About</a> </li>
-                <li class="nav-item"> <a class="nav-link" href="#">Contact</a> </li>
-                <li class="nav-item"> <a class="nav-link" href="ProductPage.html">Continue Shopping</a> </li>
-                <li class="nav-item"> <a class="nav-link" href="OrderPage.html">Show my cart</a> </li>
-            </ul>
-        </div>
-    </nav>
+    <!--MENU-->
+    <div th:replace="fragments/topnav :: navbar"></div>
 
 
     <h3>Products Page</h3>

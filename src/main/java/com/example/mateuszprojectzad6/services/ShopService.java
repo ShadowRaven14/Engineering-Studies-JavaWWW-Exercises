@@ -16,7 +16,6 @@ public class ShopService
 
     public ShopProduct addShopProduct(ShopProduct product) {
         shopRepository.save(product);
-
         return product;
     }
 

@@ -1,21 +1,19 @@
 package com.example.mateuszprojectzad6.controllers;
 
 import com.example.mateuszprojectzad6.models.ShopProduct;
-import com.example.mateuszprojectzad6.models.ShopProductModel;
+//import com.example.mateuszprojectzad6.models.ShopProductModel;
 import com.example.mateuszprojectzad6.services.ShopService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RestController;
+//import org.springframework.web.bind.annotation.Controller;
 import java.util.List;
 
-@RestController
+@Controller
 public class ShopProductController
 {
-
-
     @Autowired
     private ShopService shopService;
 
@@ -32,26 +30,27 @@ public class ShopProductController
 
     //Podstawowo
 
+    /*
     @GetMapping("/ProductPage")
     public String index(ModelMap modelMap) {
         ShopProductModel shopProductModel = new ShopProductModel();
         modelMap.put("products", shopProductModel.findAll());
         return "/ProductPage";
     }
+     */
 
-    /*
     //Inne
     @GetMapping("/ProductPage")
     public String viewCategoriesPage(Model model) {
         model.addAttribute("listShopProducts", shopService.getShopProducts());
-
         return "/ProductPage";
     }
 
+
     @GetMapping("/newProductPage")
     public String newShopProductForm(Model model) {
-        ShopProductModel shopProductModel = new ShopProductModel();
-        model.addAttribute("product", shopProductModel);
+        ShopProduct shopProduct = new ShopProduct();
+        model.addAttribute("product", shopProduct);
         //model.addAttribute("products", shopProductModel.findAll());
         return "newProductPage";
     }
@@ -78,7 +77,6 @@ public class ShopProductController
 
         return "redirect:/ProductPage";
     }
-     */
 
 
 

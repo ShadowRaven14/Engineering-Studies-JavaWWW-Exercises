@@ -1,5 +1,5 @@
 package com.example.mateuszprojectzad6.models;
-
+/*
 import javax.enterprise.inject.Model;
 import java.util.List;
 
@@ -25,3 +25,4 @@ public class ShopProductModel
 
 
 }
+ */
