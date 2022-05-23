@@ -180,9 +180,12 @@
     <h2>Save Product</h2>
 
     <form action="#" th:action="@{/saveShopProduct}" th:object="${product}" method="POST" id="test">
-        <input type="text" th:field = "*{product.name}" placeholder="Name" class="form-control mb-4 col-4" maxlength="20" required>
-        <input type="text" th:field = "*{product.date}" placeholder="Date" class="form-control mb-4 col-4" maxlength="500" required>
-        <input type="text" th:field = "*{product.price}" placeholder="Price" class="form-control mb-4 col-4" maxlength="500" required>
+        <input type="text" th:field = "*{name}" placeholder="Name" class="form-control mb-4 col-4" maxlength="20" required>
+        <input type="date" id="date" name="dateInput" th:field = "*{date}"
+               value="2000-01-01"
+               min="1990-01-01" max="2025-12-30"
+               class="form-control mb-4 col-4">
+        <input type="text" th:field = "*{price}" placeholder="Price" class="form-control mb-4 col-4" maxlength="500" required>
 
         <hr>
         <button type="submit" class="btn btn-info col-2">Add product</button>
@@ -190,7 +193,7 @@
 
     <hr>
 
-    <a th:href = "@{/ProductPage.html}">Back to the list of products</a>
+    <a th:href = "@{/ProductPage}">Back to the list of products</a>
 </div>
 
 </body>

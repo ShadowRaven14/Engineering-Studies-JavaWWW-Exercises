@@ -1,13 +1,11 @@
 package com.example.mateuszprojectzad6.models;
-/*
+
 import javax.enterprise.inject.Model;
 import java.util.List;
 
 @Model
-public class ShopProductModel
+public class ShopProductList
 {
-
-
     private List<ShopProduct> shopProducts;
 
     public List<ShopProduct> findAll() {
@@ -25,4 +23,3 @@ public class ShopProductModel
 
 
 }
- */

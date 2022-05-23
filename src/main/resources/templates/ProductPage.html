@@ -181,21 +181,24 @@
         <tr>
             <th>Id</th>
             <th>Name</th>
+            <th>Date</th>
             <th>Photo</th>
             <th>Price</th>
             <th>Buy</th>
         </tr>
-        <tr th:each="product : ${products}">
+        <tr th:each="product : ${listShopProducts}">
             <td th:text="${product.id}"></td>
             <td th:text="${product.name}"></td>
+            <td th:text="${product.date}"></td>
             <td th:text="${product.photo}"></td>
             <td th:text="${product.price}"></td>
-            <td><button>Zamów</button></td>
+            <td><button type="submit" class="btn btn-info col-2">Add to Order</button></td>
         </tr>
+        <a th:href = "@{/newProductPage}">Add new product</a>
     </table>
 
     <br/>
-    <input onclick="console.log('klik')" type="submit" value="Add new produkt"/>
+
 
 </body>
 </html>

@@ -1,8 +1,9 @@
 package com.example.mateuszprojectzad6.services;
 
 import java.util.Optional;
+
 import com.example.mateuszprojectzad6.models.ShopProduct;
-import com.example.mateuszprojectzad6.repositories.ShopRepository;
+import com.example.mateuszprojectzad6.repositories.ShopProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,27 +12,30 @@ public class ShopService
 {
 
     @Autowired
-    private ShopRepository shopRepository;
+    private ShopProductRepository shopProductRepository;
+
+    //@Autowired
+    //private ShopItemRepository shopItemRepository;
 
 
     public ShopProduct addShopProduct(ShopProduct product) {
-        shopRepository.save(product);
+        shopProductRepository.save(product);
         return product;
     }
 
     public java.util.List<ShopProduct> getShopProducts() {
-        return shopRepository.findAll();
+        return shopProductRepository.findAll();
     }
 
     public void deleteShopProduct(Long id) throws NoSuchFieldException {
-        if (shopRepository.findById(id).isEmpty()) {
+        if (shopProductRepository.findById(id).isEmpty()) {
             throw new NoSuchFieldException();
         }
-        shopRepository.deleteById(id);
+        shopProductRepository.deleteById(id);
     }
 
     public ShopProduct getShopProductById(Long id) {
-        Optional<ShopProduct> optional = shopRepository.findById(id);
+        Optional<ShopProduct> optional = shopProductRepository.findById(id);
 
         ShopProduct product = null;
 
@@ -43,4 +47,19 @@ public class ShopService
         return product;
     }
 
+    /*
+    public ShopItem getItem(int id)
+    {
+        return item;
+    }
+
+    public void addToCart(ShopItem shopItem2Add)
+    {
+    }
+
+    public FetchProfile getCart()
+    {
+
+    }
+     */
 }
