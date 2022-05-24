@@ -6,6 +6,7 @@ import java.util.List;
 @Model
 public class ShopProductList
 {
+    /*
     private List<ShopProduct> shopProducts;
 
     public List<ShopProduct> findAll() {
@@ -21,5 +22,5 @@ public class ShopProductList
         return null;
     }
 
-
+     */
 }

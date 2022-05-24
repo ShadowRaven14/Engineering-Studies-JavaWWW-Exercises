@@ -170,10 +170,10 @@
 </head>
 
 <body>
-
-
     <!--MENU-->
     <div th:replace="fragments/topnav :: navbar"></div>
+
+    <br/><br/><br/>
 
     <h3>Cart Page</h3>
     <table class="styled-table">
@@ -202,7 +202,7 @@
     </table>
     <br>
 
-    <label><a href="${pageContext.request.contextPath}/shopProduct">Continue Shopping</a></label>
+    <h3><a href="${pageContext.request.contextPath}/shopProduct" class="dropdown-item">Continue Shopping</a></h3>
 
 </body>
 </html>

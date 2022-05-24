@@ -10,32 +10,12 @@
 
     <!--Menu-->
     <nav class="navbar navbar-expand-md">
-        <a class="navbar-brand" th:href = "@{/index}">Logo</a>
-        <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
         <div class="collapse navbar-collapse" id="main-navigation">
+            <a th:href = "@{/}" class="dropdown-item">Strona Główna</a>
             <ul class="navbar-nav">
-
-                <!--Produkty-->
-                <li class="nav-item dropdown">
-                    <a href="#"
-                       class="nav-link dropdown-toggle"
-                       id="navbarDropdown"
-                       role="button"
-                       data-bs-toggle="dropdown"
-                       aria-expanded="false">
-                        Produkty
-                    </a>
-                    <ul class="dropdown-menu"
-                        aria-labelledby="navbarDropdown">
-                        <a th:href = "@{/newProductPage}" class="dropdown-item">Dodaj Produkty</a>
-                        <a th:href = "@{/ProductPage}" class="dropdown-item">Wyświetl Produkty</a>
-                    </ul>
-                </li>
-                <li>
-                    <a th:href = "@{/OrderPage}" class="dropdown-item">Koszyk</a>
-                </li>
+                <li><a th:href = "@{/newProductPage}" class="dropdown-item">Dodaj Produkty</a></li>
+                <li><a th:href = "@{/ProductPage}" class="dropdown-item">Wyświetl Produkty</a></li>
+                <li><a th:href = "@{/OrderPage}" class="dropdown-item">Koszyk</a></li>
             </ul>
         </div>
     </nav>
