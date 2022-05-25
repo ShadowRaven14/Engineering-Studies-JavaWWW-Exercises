@@ -2,9 +2,7 @@ package com.example.mateuszprojectzad6.services;
 
 import java.util.Optional;
 
-import com.example.mateuszprojectzad6.models.ShopItem;
 import com.example.mateuszprojectzad6.models.ShopProduct;
-import com.example.mateuszprojectzad6.repositories.ShopItemRepository;
 import com.example.mateuszprojectzad6.repositories.ShopProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +18,8 @@ public class ShopService {
 
 
     public ShopProduct addShopProduct(ShopProduct product) {
+        product.setInOrder(false);
+        product.setQuantity(0);
         shopProductRepository.save(product);
         return product;
     }
@@ -48,46 +48,26 @@ public class ShopService {
         return product;
     }
 
-
-    @Autowired
-    private ShopItemRepository shopItemRepository;
-
-    public ShopItem addShopItem(ShopItem item) {
-        shopItemRepository.save(item);
-        return item;
-    }
-
-    public java.util.List<ShopItem> getShopItems() {
-        return shopItemRepository.findAll();
-    }
-
-    public void deleteShopItem(Long id) throws NoSuchFieldException {
-        if (shopItemRepository.findById(id).isEmpty()) {
-            throw new NoSuchFieldException();
-        }
-        shopItemRepository.deleteById(id);
-    }
-
-    public ShopItem getShopItemById(Long id) {
-        Optional<ShopItem> optional = shopItemRepository.findById(id);
-
-        ShopItem item = null;
-
-        if (optional.isPresent()) {
-            item = optional.get();
-        } else {
-            throw new RuntimeException("Kategoria nie znaleziona dla szukanego id :: " + id);
-        }
-        return item;
-    }
-
     public void addToCart(ShopProduct product)
     {
-        ShopItem newItem = new ShopItem (product,1);
-        if(shopItemRepository.findById(newItem.getShopProduct().getId()).isEmpty())
+        ShopProduct newProduct = product;
+        if(shopProductRepository.findById(product.getId()).isEmpty())
         {
-
+            newProduct.setInOrder(true);
+            newProduct.setQuantity(1);
+            addShopProduct(newProduct);
         }
+        else
+        {
+            newProduct.setInOrder(true);
+            newProduct.setQuantity(newProduct.getQuantity()+1);
+            addShopProduct(newProduct);
+        }
+
+        try {deleteShopProduct(product.getId());}
+        catch (NoSuchFieldException e) {throw new RuntimeException(e);}
+
+        //if(shopProductRepository.findById(newItem.getShopProduct().getId()).isEmpty())
 
     }
 

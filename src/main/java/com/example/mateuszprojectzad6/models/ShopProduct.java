@@ -43,52 +43,19 @@ public class ShopProduct
     @Column(length = 20, nullable = true)
     private String photo;
 
+    @NotEmpty
+    @Column(length = 20, nullable = false)
+    private Boolean inOrder;
 
+    @NotEmpty
+    @Column(nullable = false)
+    private Integer quantity;
 
-
-    /*
-    //Konstruktory
-    public ShopProduct() {}
-
-    public ShopProduct(String id, String name, String photo, double price) {
-        this.id = id;
+    public ShopProduct( String name, Double price, Boolean inOrder, Integer quantity) {
         this.name = name;
-        this.photo = photo;
         this.price = price;
+        this.inOrder = inOrder;
+        this.quantity = quantity;
     }
 
-
-    //Gettery i Settery
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(String photo) {
-        this.photo = photo;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-     */
 }

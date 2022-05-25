@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 
-import com.example.mateuszprojectzad6.models.ShopItem;
 import com.example.mateuszprojectzad6.models.ShopProduct;
-import com.example.mateuszprojectzad6.models.ShopProductList;
 import com.example.mateuszprojectzad6.services.ShopService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,20 +20,19 @@ public class ShopOrderController
     @Autowired
     private ShopService shopService;
 
-    //Lista
-    private List<ShopProduct> shopProductList;
-
-    public List<ShopProduct> findAll() {
-        return this.shopProductList;
-    }
-
-    public ShopProduct find(Long id) {
-        for (ShopProduct shopProduct : this.shopProductList) {
-            if (shopProduct.getId()==id) {
-                return shopProduct;
-            }
+    public List<ShopProduct> addToList()
+    {
+        List<ShopProduct> shopProductList = shopService.getShopProducts();
+        List<ShopProduct> newShopProductsInOrder = null;
+        for (ShopProduct shopProduct : shopProductList)
+        {
+            if(shopProduct.getInOrder()==true)
+                newShopProductsInOrder.add(shopProduct);
         }
-        return null;
+
+        ShopProduct newProduct = new ShopProduct("PUSTO", 1000.00, true, 3);
+        newShopProductsInOrder.add(newProduct);
+        return newShopProductsInOrder;
     }
 
     /*
@@ -47,12 +44,14 @@ public class ShopOrderController
      */
 
     @GetMapping("/OrderPage")
-    public String index(Model model) {
-        model.addAttribute("items", shopProductList);
+    public String index(Model model)
+    {
+        List<ShopProduct> shopProductsInOrder = this.addToList();
+        model.addAttribute("shopProductsInOrder", shopProductsInOrder);
         return "/OrderPage";
     }
 
-
+    /*
     @GetMapping("buy/{id}")
     public String buy(@PathVariable("id") Long id, HttpSession session) {
         //ShopProductList shopProductList = new ShopProductList();
@@ -92,7 +91,7 @@ public class ShopOrderController
         }
         return -1;
     }
-
+    */
 
 
 }

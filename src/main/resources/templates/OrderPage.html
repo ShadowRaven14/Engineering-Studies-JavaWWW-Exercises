@@ -188,13 +188,13 @@
             <th>Sub Total</th>
         </tr>
         <th:set var="total" value="0"></th:set>
-        <tr th:each="item : ${items}">
-            <td th:text="${item.shopProduct.id}"></td>
-            <td th:text="${item.shopProduct.name}"></td>
-            <td th:text="${item.shopProduct.photo}"></td>
-            <td th:text="${item.shopProduct.price}"></td>
-            <td th:text="${item.shopProduct.quantity}"></td>
-            <td th:text="${item.shopProduct.price * item.quantity}"></td>
+        <tr th:each="item : ${shopProductsInOrder}">
+            <td th:text="${item.id}"></td>
+            <td th:text="${item.name}"></td>
+            <td th:text="${item.photo}"></td>
+            <td th:text="${item.price}"></td>
+            <td th:text="${item.quantity}"></td>
+            <td th:text="${item.price * item.quantity}"></td>
         </tr>
         <tr>
             <td colspan="6" align="right">Sum</td>

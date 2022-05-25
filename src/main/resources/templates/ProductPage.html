@@ -194,7 +194,7 @@
             <td th:text="${product.date}"></td>
             <td th:text="${product.photo}"></td>
             <td th:text="${product.price}"></td>
-            <td><button type="submit" class="btn btn-info dropdown-item">Add</button></td>
+            <td><button th:action="@{/addShopProductToOrder}" th:object="${product}" method="POST" type="submit" class="btn btn-info dropdown-item">Add</button></td>
         </tr>
     </table>
 
