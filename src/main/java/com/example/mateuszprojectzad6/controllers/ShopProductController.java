@@ -1,23 +1,24 @@
 package com.example.mateuszprojectzad6.controllers;
 
-import com.example.mateuszprojectzad6.exceptions.DataNotFoundException;
-import com.example.mateuszprojectzad6.models.ShopItem;
 import com.example.mateuszprojectzad6.models.ShopProduct;
-import com.example.mateuszprojectzad6.models.ShopProductList;
-import com.example.mateuszprojectzad6.services.ShopService;
-import org.springframework.http.HttpStatus;
+import com.example.mateuszprojectzad6.models.ShopOrderItem;
+import com.example.mateuszprojectzad6.services.ShopOrderItemService;
+import com.example.mateuszprojectzad6.services.ShopProductService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.web.bind.annotation.Controller;
-import java.util.List;
+
 
 @Controller
 public class ShopProductController
 {
     @Autowired
-    private ShopService shopService;
+    private ShopProductService shopProductService;
+
+    @Autowired
+    private ShopOrderItemService shopOrderItemService;
 
     //Podstawowo
     /*
@@ -32,7 +33,7 @@ public class ShopProductController
     //Inne
     @GetMapping("/ProductPage")
     public String viewCategoriesPage(Model model) {
-        model.addAttribute("listShopProducts", shopService.getShopProducts());
+        model.addAttribute("listShopProducts", shopProductService.getShopProducts());
         return "/ProductPage";
     }
 
@@ -46,14 +47,14 @@ public class ShopProductController
 
     @PostMapping("/saveShopProduct")
     public String saveShopProduct(@ModelAttribute("product") ShopProduct product) {
-        shopService.addShopProduct(product);
+        shopProductService.addShopProduct(product);
 
         return "redirect:/ProductPage";
     }
 
     @GetMapping("updateShopProduct/{id}")
     public String updateShopProduct(@PathVariable(value = "id") Long id, Model model) {
-        ShopProduct product = shopService.getShopProductById(id);
+        ShopProduct product = shopProductService.getShopProductById(id);
         //model.addAttribute("listCategories", categoryService.getAllCategories());
         model.addAttribute("product", product);
         return "/updateProductPage";
@@ -61,21 +62,22 @@ public class ShopProductController
 
     @GetMapping("deleteShopProduct/{id}")
     public String deleteShopProduct(@PathVariable(value = "id") Long id) throws NoSuchFieldException {
-        this.shopService.deleteShopProduct(id);
+        this.shopProductService.deleteShopProduct(id);
         return "redirect:/ProductPage";
     }
 
 
-    /*
-    @GetMapping("/add/{id}")
-    public String addItemToCart(@PathVariable int id, Model model)
+    @GetMapping("/addToOrder/{id}")
+    public String addItemToCart(@PathVariable Long id, Model model)
     {
-        ShopItem shopItem2Add = shopService.getItem(id);
-        if(shopItem2Add == null) throw new DataNotFoundException(String. valueOf(id));
-        this.shopService.addToCart(shopItem2Add);
-        model.addAttribute( "order", this.shopService.getCart().getItems());
+        ShopOrderItem shopItem2Add = shopProductService.getOrderItem(id);
+        //if(shopItem2Add == null) throw new DataNotFoundException(String. valueOf(id));
+        this.shopProductService.addToOrder(shopItem2Add);
+        model.addAttribute( "order", this.shopProductService.getOrder().getItems());
         return "redirect:/OrderPage/";
     }
+
+    /*
     @ExceptionHandler(DataNotFoundException. class)
     @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "No requested data")
     public String handleDataError(DataNotFoundException e) {
@@ -83,5 +85,6 @@ public class ShopProductController
         return "error/notfound";
     }
      */
+
 
 }

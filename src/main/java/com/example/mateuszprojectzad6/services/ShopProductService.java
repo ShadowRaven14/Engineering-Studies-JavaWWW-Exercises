@@ -2,21 +2,28 @@ package com.example.mateuszprojectzad6.services;
 
 import java.util.Optional;
 
+import com.example.mateuszprojectzad6.models.ShopOrderItem;
 import com.example.mateuszprojectzad6.models.ShopProduct;
+import com.example.mateuszprojectzad6.repositories.ShopOrderItemRepository;
 import com.example.mateuszprojectzad6.repositories.ShopProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.mail.FetchProfile;
+
 @Service
-public class ShopService
+public class ShopProductService
 {
 
     @Autowired
     private ShopProductRepository shopProductRepository;
 
-    //@Autowired
-    //private ShopItemRepository shopItemRepository;
+    @Autowired
+    private ShopOrderItemRepository shopOrderItemRepository;
 
+    public Optional<ShopProduct> findById(Long id) {
+        return shopProductRepository.findById(id);
+    }
 
     public ShopProduct addShopProduct(ShopProduct product) {
         shopProductRepository.save(product);
@@ -47,19 +54,22 @@ public class ShopService
         return product;
     }
 
-    /*
-    public ShopItem getItem(int id)
+
+
+
+    public ShopOrderItemRepository getOrderItem(Long id)
     {
-        return item;
+        return shopOrderItemRepository.findById(id);
     }
 
-    public void addToCart(ShopItem shopItem2Add)
-    {
-    }
-
-    public FetchProfile getCart()
+    public void addToOrder(ShopOrderItem shopItem2Add)
     {
 
     }
-     */
+
+
+    public FetchProfile getOrder()
+    {
+        return null;
+    }
 }

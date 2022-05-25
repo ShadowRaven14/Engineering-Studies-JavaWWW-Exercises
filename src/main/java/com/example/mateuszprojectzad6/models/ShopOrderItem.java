@@ -13,7 +13,7 @@ import org.springframework.web.context.annotation.SessionScope;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ShopItem
+public class ShopOrderItem
 {
     //Atrybuty
     private ShopProduct shopProduct;

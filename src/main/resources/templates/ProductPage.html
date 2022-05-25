@@ -194,7 +194,13 @@
             <td th:text="${product.date}"></td>
             <td th:text="${product.photo}"></td>
             <td th:text="${product.price}"></td>
-            <td><button type="submit" class="btn btn-info dropdown-item">Add</button></td>
+            <td>
+                <button type="submit" class="btn btn-info dropdown-item">Add</button>
+                <a th:href="@{/updateShopProduct/{id}(id=${product.id})}" class="btn btn-primary">Edit</a>
+                <a th:href="@{/updateShopProduct/{id}(id=${product.id})}" class="btn btn-primary">Edit</a>
+                <a th:href="@{/deleteShopProduct/{id}(id=${product.id})}" class="btn btn-danger">Delete</a>
+            </td>
+
         </tr>
     </table>
 
