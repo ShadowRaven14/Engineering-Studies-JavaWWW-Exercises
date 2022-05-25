@@ -65,6 +65,13 @@ public class ShopProductController
         return "redirect:/ProductPage";
     }
 
+    @GetMapping("/OrderPage")
+    public String addShopProductToOrder(@PathVariable(value = "id") Long id, Model model) {
+        ShopProduct product = shopService.getShopProductById(id);
+        model.addAttribute("product", product);
+        return "OrderPage";
+    }
+
 
     /*
     @GetMapping("/add/{id}")
@@ -76,6 +83,7 @@ public class ShopProductController
         model.addAttribute( "order", this.shopService.getCart().getItems());
         return "redirect:/OrderPage/";
     }
+
     @ExceptionHandler(DataNotFoundException. class)
     @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "No requested data")
     public String handleDataError(DataNotFoundException e) {

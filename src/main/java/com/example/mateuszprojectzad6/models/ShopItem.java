@@ -7,8 +7,13 @@ import lombok.Setter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 
-@Component
-@SessionScope
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+
+//@Component
+//@SessionScope
+@Entity
+@Table(name = "ITEM")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -16,8 +21,18 @@ import org.springframework.web.context.annotation.SessionScope;
 public class ShopItem
 {
     //Atrybuty
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column
+    @NotEmpty
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "PRODUCT", nullable = false)
     private ShopProduct shopProduct;
 
+    @Column
+    @NotEmpty
     private int quantity;
 
     /*
