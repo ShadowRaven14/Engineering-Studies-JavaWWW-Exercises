@@ -31,23 +31,21 @@ public class ShopOrderController
         }
 
         ShopProduct newProduct = new ShopProduct("PUSTO", 1000.00, true, 3);
-        newShopProductsInOrder.add(newProduct);
+        //newShopProductsInOrder.add(newProduct);
+        shopService.addShopProduct(newProduct);
         return newShopProductsInOrder;
     }
 
-    /*
-    @GetMapping("/ProductPage")
-    public String viewCategoriesPage(Model model) {
-        model.addAttribute("listShopProducts", shopService.getShopProducts());
-        return "/OrderPage";
-    }
-     */
-
+    //INDEX
     @GetMapping("/OrderPage")
     public String index(Model model)
     {
-        List<ShopProduct> shopProductsInOrder = this.addToList();
-        model.addAttribute("shopProductsInOrder", shopProductsInOrder);
+        //List<ShopProduct> shopProductsInOrder =
+        //this.addToList();
+        ShopProduct newProduct = new ShopProduct("PUSTO", 1000.00, true, 3);
+        //newShopProductsInOrder.add(newProduct);
+        shopService.addShopProduct(newProduct);
+        model.addAttribute("shopProductsInOrder", shopService.getShopProducts());
         return "/OrderPage";
     }
 

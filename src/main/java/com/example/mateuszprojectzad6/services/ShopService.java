@@ -1,8 +1,10 @@
 package com.example.mateuszprojectzad6.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.example.mateuszprojectzad6.models.ShopProduct;
+//import com.example.mateuszprojectzad6.repositories.ShopOrderRepository;
 import com.example.mateuszprojectzad6.repositories.ShopProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,18 +16,24 @@ public class ShopService {
     private ShopProductRepository shopProductRepository;
 
     //@Autowired
-    //private ShopItemRepository shopItemRepository;
+    //private ShopOrderRepository shopOrderRepository;
 
+
+
+    public java.util.List<ShopProduct> getShopProducts() {
+        return shopProductRepository.findAll();
+    }
+
+    public Optional<List<ShopProduct>> getShopProductsInOrder() {
+        //return shopProductRepository.findShopProductsByInOrder(true);
+        return null;
+    }
 
     public ShopProduct addShopProduct(ShopProduct product) {
         product.setInOrder(false);
         product.setQuantity(0);
         shopProductRepository.save(product);
         return product;
-    }
-
-    public java.util.List<ShopProduct> getShopProducts() {
-        return shopProductRepository.findAll();
     }
 
     public void deleteShopProduct(Long id) throws NoSuchFieldException {
@@ -72,20 +80,3 @@ public class ShopService {
     }
 
 }
-
-
-    /*
-    public ShopItem getItem(int id)
-    {
-        return item;
-    }
-
-    public void addToCart(ShopItem shopItem2Add)
-    {
-    }
-
-    public FetchProfile getCart()
-    {
-
-    }
-     */

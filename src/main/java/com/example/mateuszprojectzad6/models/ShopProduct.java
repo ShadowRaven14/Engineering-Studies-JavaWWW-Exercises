@@ -21,6 +21,7 @@ public class ShopProduct
     //Atrybuty
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Long id;
 
     @Column(length = 20)

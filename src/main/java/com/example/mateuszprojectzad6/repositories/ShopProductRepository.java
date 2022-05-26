@@ -15,5 +15,9 @@ public interface ShopProductRepository extends JpaRepository <ShopProduct, Long>
     Optional<ShopProduct> findById(Long id);
 
     ShopProduct findByName(String name);
+
+    //Optional<List<ShopProduct>> findAllByInOrder(Boolean inOrder);
+
+    //Optional<List<ShopProduct>> findShopProductsByInOrder(Boolean inOrder);
 }
 

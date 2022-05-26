@@ -15,23 +15,14 @@ public class ShopProductController
     @Autowired
     private ShopService shopService;
 
-    //Podstawowo
-    /*
-    @GetMapping("/ProductPage")
-    public String index(ModelMap modelMap) {
-        ShopProductModel shopProductModel = new ShopProductModel();
-        modelMap.put("products", shopProductModel.findAll());
-        return "/ProductPage";
-    }
-     */
-
-    //Inne
+    //INDEX
     @GetMapping("/ProductPage")
     public String viewCategoriesPage(Model model) {
         model.addAttribute("listShopProducts", shopService.getShopProducts());
         return "/ProductPage";
     }
 
+    //NOWY PRODUKT
     @GetMapping("/newProductPage")
     public String newShopProductForm(Model model) {
         ShopProduct shopProduct = new ShopProduct();
@@ -40,6 +31,7 @@ public class ShopProductController
         return "newProductPage";
     }
 
+    //ZAPISZ PRODUKT
     @PostMapping("/saveShopProduct")
     public String saveShopProduct(@ModelAttribute("product") ShopProduct product) {
         shopService.addShopProduct(product);
@@ -47,6 +39,7 @@ public class ShopProductController
         return "redirect:/ProductPage";
     }
 
+    //AKTUALIZUJ PRODUKT
     @GetMapping("updateShopProduct/{id}")
     public String updateShopProduct(@PathVariable(value = "id") Long id, Model model) {
         ShopProduct product = shopService.getShopProductById(id);
@@ -55,12 +48,14 @@ public class ShopProductController
         return "/updateProductPage";
     }
 
+    //USUŃ PRODUKT
     @GetMapping("deleteShopProduct/{id}")
     public String deleteShopProduct(@PathVariable(value = "id") Long id) throws NoSuchFieldException {
         this.shopService.deleteShopProduct(id);
         return "redirect:/ProductPage";
     }
 
+    //DODAJ DO KOSZYKA
     @GetMapping("/add/{id}")
     public String addShopProductToOrder(@PathVariable(value = "id") Long id, Model model) {
         ShopProduct product = shopService.getShopProductById(id);
