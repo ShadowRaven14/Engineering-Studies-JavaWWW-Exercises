@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Product Page</title>
-    <!--Bootstrap-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>new Product Page</title>
+
 
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
@@ -171,49 +169,30 @@
 
 
 <body>
-
     <!--MENU-->
     <div th:replace="fragments/topnav :: navbar"></div>
 
     <br/><br/><br/>
 
-    <h3>Products Page</h3>
-    <br/>
-    <table class="styled-table">
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Date</th>
-            <th>Price</th>
-            <th>inOrder</th>
-            <th>Quantity</th>
-            <th>Buy</th>
-        </tr>
-        <tr th:each="product : ${listShopProducts}">
-            <td th:text="${product.id}"></td>
-            <td th:text="${product.name}"></td>
-            <td th:text="${product.date}"></td>
-            <td th:text="${product.price}"></td>
-            <td th:text="${product.inOrder}"></td>
-            <td th:text="${product.quantity}"></td>
-            <td>
-                <button th:href="@{/addShopProductToOrder/{id}(id=${product.id})}" th:object="${product}"
-                        method="POST" type="submit" class="btn btn-info dropdown-item">Add</button>
-                <a th:href="@{/addShopProductToOrder/{id}(id=${product.id})}" th:object="${product}"
-                        method="POST" type="submit" class="btn btn-info dropdown-item">Cart</a>
-                <a th:href="@{/copyShopProduct/{id}(id=${product.id})}" class="btn btn-primary">Copy</a>
-                <a th:href="@{/updateShopProductForm/{id}(id=${product.id})}" class="btn btn-primary">Edit</a>
-                <a th:href="@{/deleteShopProduct/{id}(id=${product.id})}" class="btn btn-danger">Delete</a>
-            </td>
+    <div class="container">
+        <h1>update current Product Page</h1>
+        <hr>
+            <h2>Update Product</h2>
 
-        </tr>
-    </table>
+            <form action="#" th:action="@{/saveShopProduct}" th:object="${product}" method="POST" id="test">
+                <input type="text" th:field = "*{name}" th:placeholder="${product.name}" class="form-control mb-4 col-4" maxlength="20" required>
+                <input type="date" id="date" name="dateInput" th:field = "*{date}" th:placeholder="${product.date}"
+                       value="2000-01-01"
+                       min="1990-01-01" max="2025-12-30"
+                       class="form-control mb-4 col-4">
+                <input type="text" th:field = "*{price}" th:placeholder="${product.price}" class="form-control mb-4 col-4" maxlength="500" required>
 
-    <h3><a th:href = "@{/newProductPage}" class="dropdown-item">Add new product</a></h3>
-    <h3><a th:href = "@{/OrderPage}" class="dropdown-item">Check your cart</a></h3>
+                <hr>
+                <button type="submit" class="btn btn-info col-2">Add product</button>
+            </form>
+        <hr>
 
-    <br/>
-
-
+        <a th:href = "@{/ProductPage}">Back to the list of products</a>
+    </div>
 </body>
 </html>

@@ -20,6 +20,7 @@ public class ShopOrderController
     @Autowired
     private ShopService shopService;
 
+    /*
     public List<ShopProduct> addToList()
     {
         List<ShopProduct> shopProductList = shopService.getShopProducts();
@@ -30,11 +31,12 @@ public class ShopOrderController
                 newShopProductsInOrder.add(shopProduct);
         }
 
-        ShopProduct newProduct = new ShopProduct("PUSTO", 1000.00, true, 3);
+        ShopProduct newProduct = new ShopProduct("PUSTO", 1000.00, Boolean.TRUE, 1);
         //newShopProductsInOrder.add(newProduct);
         shopService.addShopProduct(newProduct);
         return newShopProductsInOrder;
     }
+     */
 
     //INDEX
     @GetMapping("/OrderPage")
@@ -42,10 +44,10 @@ public class ShopOrderController
     {
         //List<ShopProduct> shopProductsInOrder =
         //this.addToList();
-        ShopProduct newProduct = new ShopProduct("PUSTO", 1000.00, true, 3);
+        ShopProduct newProduct = new ShopProduct("PUSTO", 1.00, true, 1);
         //newShopProductsInOrder.add(newProduct);
         shopService.addShopProduct(newProduct);
-        model.addAttribute("shopProductsInOrder", shopService.getShopProducts());
+        model.addAttribute("shopProductsInOrder", shopService.filterShopProductsByInOrder());
         return "/OrderPage";
     }
 
