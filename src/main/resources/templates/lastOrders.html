@@ -179,22 +179,12 @@
     <br/>
     <table class="styled-table">
         <tr>
-            <th>Name</th>
-            <th>Photo</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Sub Total</th>
-        </tr>
+            <th>ID</th>
+            <th>Money</th>
         <th:set var="total" value="0"></th:set>
-        <tr th:each="item : ${shopProductsInOrder}">
-            <td th:text="${item.name}"></td>
-            <td th:text="${item.photo}"></td>
-            <td th:text="${item.price}"></td>
-            <td th:text="${item.quantity}"></td>
-            <td th:text="${item.price * item.quantity}"></td>
-            <td>
-                <a th:href="@{/deleteFromOrder/{id}(id=${item.id})}" class="btn btn-danger">Delete</a>
-            </td>
+        <tr th:each="order : ${Orders}">
+            <td th:text="${order.id}"></td>
+            <td th:text="${order.moneySpend}"></td>
         </tr>
         <tr>
             <td th:font-size="20"><h3>Sum</h3></td>

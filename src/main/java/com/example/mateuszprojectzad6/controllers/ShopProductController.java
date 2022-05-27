@@ -4,8 +4,11 @@ import com.example.mateuszprojectzad6.models.ShopProduct;
 import com.example.mateuszprojectzad6.services.ShopService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.validation.Valid;
 //import org.springframework.web.bind.annotation.Controller;
 
 
@@ -27,11 +30,15 @@ public class ShopProductController
     public String newShopProductForm(Model model) {
         ShopProduct shopProduct = new ShopProduct();
         model.addAttribute("product", shopProduct);
-        return "newProductPage";
+        return "/newProductPage";
     }
 
     @PostMapping("/saveShopProduct")
-    public String saveShopProduct(@ModelAttribute("product") ShopProduct product) {
+    public String saveShopProduct(@Valid @ModelAttribute("product") ShopProduct product,
+                                  BindingResult result) {
+        if (result.hasErrors()) {
+            return "/newProductPage";
+        }
         shopService.addShopProduct(product);
         return "redirect:/ProductPage";
     }

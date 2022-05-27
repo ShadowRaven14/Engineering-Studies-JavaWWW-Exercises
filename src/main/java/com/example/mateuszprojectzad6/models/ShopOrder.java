@@ -1,4 +1,5 @@
 package com.example.mateuszprojectzad6.models;
+
 /*
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,16 +8,15 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "ORDER")
+@Table(name = "PRODUCT")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ShopOrder {
+public class ShopOrder
+{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,12 +24,12 @@ public class ShopOrder {
     private Long id;
 
     @NotEmpty
-    @Column(nullable = true)
-    private Long product_id;
+    @Column(name = "Money", nullable = false)
+    private Integer moneySpend;
 
-    @NotEmpty
-    @Column(nullable = true)
-    private Integer quantity;
+    public ShopProduct( Double moneySpend) {
+        this.moneySpend = moneySpend;
+    }
 
 }
-*/
+ */

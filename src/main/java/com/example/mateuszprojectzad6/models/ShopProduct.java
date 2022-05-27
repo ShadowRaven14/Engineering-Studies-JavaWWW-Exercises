@@ -24,32 +24,32 @@ public class ShopProduct
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(length = 20)
     @NotEmpty
     @Size(min = 3, max = 20, message = "Name must be between 3 and 20 characters long")
     @Pattern(regexp = "^[a-z]+$", message = "Must contains only small letters")
+    @Column(name = "name", length = 20)
     private String name;
 
     @NotEmpty
     @Min(value = 10, message = "Price must be greater than 10")
-    @Column(length = 20, nullable = false)
+    @Column(name = "price", length = 20, nullable = false)
     private Double price;
 
     @NotEmpty
-    @Column(nullable = true)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "date", length = 20, nullable = true)
     private LocalDate date;
 
     @NotEmpty
-    @Column(length = 20, nullable = true)
+    @Column(name = "photo", length = 20, nullable = true)
     private String photo;
 
     @NotEmpty
-    @Column(length = 20, nullable = false)
+    @Column(name = "inOrder", length = 20, nullable = false)
     private Boolean inOrder;
 
     @NotEmpty
-    @Column(nullable = false)
+    @Column(name = "quantity", nullable = false)
     private Integer quantity;
 
     public ShopProduct( String name, Double price, Boolean inOrder, Integer quantity) {

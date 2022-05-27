@@ -20,17 +20,28 @@ public class ShopService {
 
 
 
+    //PODSTAWOWE
     public java.util.List<ShopProduct> getShopProducts() {
         return shopProductRepository.findAll();
     }
 
-    public java.util.List<ShopProduct> filterShopProductsByInOrder() {
-        return shopProductRepository.findAllByInOrder(true);
+    public ShopProduct getShopProductById(Long id) {
+        Optional<ShopProduct> optional = shopProductRepository.findById(id);
+
+        ShopProduct product = null;
+
+        if (optional.isPresent()) {
+            product = optional.get();
+        } else {
+            throw new RuntimeException("Kategoria nie znaleziona dla szukanego id :: " + id);
+        }
+        return product;
     }
 
+
+
+    //LISTA PRODUKTÓW
     public ShopProduct addShopProduct(ShopProduct product) {
-        //product.setInOrder(false);
-        //product.setQuantity(0);
         shopProductRepository.save(product);
         return product;
     }
@@ -61,21 +72,14 @@ public class ShopService {
         shopProductRepository.deleteById(id);
     }
 
-    public ShopProduct getShopProductById(Long id) {
-        Optional<ShopProduct> optional = shopProductRepository.findById(id);
 
-        ShopProduct product = null;
 
-        if (optional.isPresent()) {
-            product = optional.get();
-        } else {
-            throw new RuntimeException("Kategoria nie znaleziona dla szukanego id :: " + id);
-        }
-        return product;
+    //KOSZYK
+    public java.util.List<ShopProduct> filterShopProductsByInOrder() {
+        return shopProductRepository.findAllByInOrder(true);
     }
 
-    public void addToCart(ShopProduct newProduct)
-    {
+    public void addToCart(ShopProduct newProduct) {
 
         ShopProduct product = shopProductRepository.findById(newProduct.getId()).get();
         shopProductRepository.findById(product.getId());
@@ -88,27 +92,55 @@ public class ShopService {
 
         shopProductRepository.save(product);
 
-        /*
-        ShopProduct newProduct = product;
-        if(shopProductRepository.findById(product.getId()).isEmpty())
-        {
-            newProduct.setInOrder(true);
-            newProduct.setQuantity(1);
-            addShopProduct(newProduct);
-        }
-        else
-        {
-            newProduct.setInOrder(true);
-            newProduct.setQuantity(newProduct.getQuantity()+1);
-            addShopProduct(newProduct);
-        }
-
-        try {deleteShopProduct(product.getId());}
-        catch (NoSuchFieldException e) {throw new RuntimeException(e);}
-
-        //if(shopProductRepository.findById(newItem.getShopProduct().getId()).isEmpty())
-         */
-
     }
+
+    public void deleteFromCart(Long id) {
+
+        ShopProduct product = shopProductRepository.findById(id).get();
+        //shopProductRepository.findById(product.getId());
+        product.setQuantity(0);
+        product.setInOrder(false);
+        shopProductRepository.save(product);
+    }
+
+    public double getTotal()
+    {
+        double total = 0.0;
+        java.util.List<ShopProduct> currentOrder = filterShopProductsByInOrder();
+        for (ShopProduct shopProduct : currentOrder)
+        {
+            total = total +
+                    (shopProduct.getPrice() * shopProduct.getQuantity());
+        }
+        return total;
+    }
+
+    public void deleteAllFromCart()
+    {
+        java.util.List<ShopProduct> currentOrder = filterShopProductsByInOrder();
+        for (ShopProduct boughtProduct : currentOrder)
+        {
+            boughtProduct.setQuantity(0);
+            boughtProduct.setInOrder(false);
+            shopProductRepository.save(boughtProduct);
+        }
+    }
+
+    //ZAMÓWIENIA
+    /*
+    public ShopOrder addOrder(ShopOrder order) {
+        shopProductRepository.save(order);
+        return order;
+    }
+    public void finalizeOrder()
+    {
+        Double toPay = this.getTotal();
+        this.deleteAllFromCart();
+        ShopOrder newOrder(toPay);
+        shopOrderRepository.addOrder(newOrder);
+    }
+     */
+
+
 
 }

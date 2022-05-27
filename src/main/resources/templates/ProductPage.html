@@ -197,10 +197,8 @@
             <td th:text="${product.inOrder}"></td>
             <td th:text="${product.quantity}"></td>
             <td>
-                <button th:href="@{/addShopProductToOrder/{id}(id=${product.id})}" th:object="${product}"
-                        method="POST" type="submit" class="btn btn-info dropdown-item">Add</button>
                 <a th:href="@{/addShopProductToOrder/{id}(id=${product.id})}" th:object="${product}"
-                        method="POST" type="submit" class="btn btn-info dropdown-item">Cart</a>
+                        method="POST" type="submit" class="btn btn-info dropdown-item">Add to Cart</a>
                 <a th:href="@{/copyShopProduct/{id}(id=${product.id})}" class="btn btn-primary">Copy</a>
                 <a th:href="@{/updateShopProductForm/{id}(id=${product.id})}" class="btn btn-primary">Edit</a>
                 <a th:href="@{/deleteShopProduct/{id}(id=${product.id})}" class="btn btn-danger">Delete</a>
