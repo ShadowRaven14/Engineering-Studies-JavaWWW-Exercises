@@ -183,6 +183,9 @@
 
             <form action="#" th:action="@{/saveShopProduct}" th:object="${product}" method="POST" id="test">
                 <input type="text" th:field = "*{name}" placeholder="Name" class="form-control mb-4 col-4" maxlength="20" required>
+                <ul>
+                    <li th:each="err : ${#fields.errors('name')}" th:text="${err}" class="error" />
+                </ul>
                 </input>
                 <input type="date" id="date" name="dateInput" th:field = "*{date}"
                        value="2000-01-01"

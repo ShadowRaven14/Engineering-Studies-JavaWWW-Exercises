@@ -207,6 +207,8 @@
         </tr>
     </table>
 
+    <h1 th:text="${listShopProducts.size()>0} ? 'Items in store':'No items in store'"></h1>
+
     <h3><a th:href = "@{/newProductPage}" class="dropdown-item">Add new product</a></h3>
     <h3><a th:href = "@{/OrderPage}" class="dropdown-item">Check your cart</a></h3>
 

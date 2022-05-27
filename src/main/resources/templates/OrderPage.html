@@ -203,6 +203,10 @@
     </table>
     <br>
 
+    <h3><p>Sum: <span th:text="*{total}">Suma</span>.</p></h3>
+
+    <h1 th:text="${shopProductsInOrder.size()>0} ? 'Items in cart':'No items in cart'"></h1>
+
     <h3><a th:href = "@{/ProductPage}" class="dropdown-item">Continue Shopping</a></h3>
     <h3><a th:href = "@{/deleteAllFromCart}" class="dropdown-item">CHECKOUT</a></h3>
 

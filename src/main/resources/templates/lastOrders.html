@@ -193,6 +193,8 @@
     </table>
     <br>
 
+    <h1 th:text="${Orders.size()>0} ? 'Orders':'No orders'"></h1>
+
     <h3><a th:href = "@{/ProductPage}" class="dropdown-item">Continue Shopping</a></h3>
     <h3><a th:href = "@{/deleteAllFromCart}" class="dropdown-item">CHECKOUT</a></h3>
 
